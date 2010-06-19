@@ -42,7 +42,7 @@ esac
 # Setting OS-specific paths, command aliases and other variables
 #
 OS=$(uname -s)
-case $os in
+case $OS in
     DragonFly)
         export FORTUNE_SET="dragonfly-tips"
         export PATH=/bin:/usr/bin:/usr/sbin:/sbin:/usr/pkg/bin:/usr/pkg/sbin:/usr/local/bin:/usr/local/sbin:/usr/games/:/usr/local/games
