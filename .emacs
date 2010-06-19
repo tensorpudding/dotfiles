@@ -85,6 +85,12 @@
 (server-start)
 ;;
 ;;;;
+;; Set color for cursor (needed for Windows Emacs 23.2)
+;;;;
+;;
+(set-cursor-color "white")
+;;
+;;;;
 ;; Customized Variables/Faces
 ;;;;
 ;;
@@ -132,7 +138,7 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#2e3436" :foreground "#eeeeec" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 87 :width normal :foundry "bitstream" :family "Bitstream Vera Sans Mono"))))
+ '(default ((t (:inherit nil :stipple nil :background "#2e3436" :foreground "#eeeeec" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 87 :width normal :foundry "outline" :family "Anonymous Pro"))))
  '(erc-bold-face ((t (:foreground "deep pink" :weight bold))))
  '(erc-input-face ((t (:foreground "thistle"))))
  '(erc-my-nick-face ((t (:foreground "slateblue" :weight bold))))
