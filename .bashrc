@@ -28,17 +28,8 @@ case $os in
         export FORTUNE_SET="freebsd-tips"
         export FTP_PASSIVE_MODE=YES
         ;;
-    *)
-        export PATH=/bin:/usr/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin:/usr/games/:/usr/local/games
-        alias pkg_add="pkg_add -r -v"
-        alias mv="mv -v"
-        alias cp="cp -v"
-        alias mkdir="mkdir -v"
-        alias ln="ln -v"      
-        alias ls="ls -FG"
-        ;;
     Linux)
-        alias rm="rm --preserve-root"
+        export PATH=/bin:/usr/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin:/usr/games/:/usr/local/games        alias rm="rm --preserve-root"
         alias cp="cp -v"
         alias mv="mv -v"
         alias mkdir="mkdir -v"
@@ -49,17 +40,8 @@ case $os in
         else alias ls="ls -h"
         fi
         ;;
-    FreeBSD)
-        ;;
-    OpenBSD)
-
-        ;;
-    DragonFly)
-
-        ;;
-    Darwin)
-        ;;
     *)
+        export PATH=/bin:/usr/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin:/usr/games/:/usr/local/games
         ;;
 esac
 alias tmuxa="tmux attach"

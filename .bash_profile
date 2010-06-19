@@ -69,6 +69,7 @@ case $OS in
         alias ls="ls -FG"
         ;;
     Linux)
+	export PATH=/bin:/usr/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin:/usr/games/:/usr/local/games
         alias rm="rm --preserve-root"
         alias cp="cp -v"
         alias mv="mv -v"
