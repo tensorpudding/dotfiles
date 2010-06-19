@@ -4,8 +4,9 @@ URxvt*saveLines:32767
 URxvt*scrollBar:false
 URxvt*internalBorder:false
 ! URxvt*font:xft:Inconsolata:pixelsize=14
-! URxvt*font:xft:Fixedsys Excelsior 3.01:pixelsize=16
+! URxvt*font:xft:Fixedsys Excelsior:pixelsize=12
 URxvt*font:xft:Anonymous Pro:pixelsize=14
+! URxvt*font:xft:Proggy Clean:pixelsize=14
 URxvt*loginShell:true
 URxvt.urgentOnBell: true
 URxvt.background: #2e3436
