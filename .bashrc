@@ -64,6 +64,8 @@ alias nao="telnet nethack.alt.org"
 alias ecc="emacsclient -n -c"
 alias ec="emacsclient -nw"
 alias mg="mg -n"
+alias halt="halt -p"
+
 
 #
 # Setting a good value for $EDITOR and $BROWSER
