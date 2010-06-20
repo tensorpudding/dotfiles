@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# .bash_profile
+# .bash_profile: bash startup script for interactive shells
+
 #
 # Run keychain with default SSH id
 #
@@ -7,9 +8,11 @@ if [ -f /usr/bin/keychain -a -f ~/.ssh/id_rsa ]; then
     /usr/bin/keychain -q ~/.ssh/id_rsa
     source $HOME/.keychain/${HOSTNAME}-sh
 fi
+
 #
 # If we're in a chroot, display a special prompt, otherwise display default
 #
+
 case $USER in
     root)
         h="\[\e[1;37m\]\h\[\e[m\]"
@@ -41,6 +44,7 @@ esac
 #
 # Setting OS-specific paths, command aliases and other variables
 #
+
 OS=$(uname -s)
 case $OS in
     DragonFly)
@@ -85,6 +89,11 @@ case $OS in
         export PATH=/bin:/usr/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin:/usr/games/:/usr/local/games
         ;;
 esac
+
+#
+# Universal aliases
+#
+
 alias tmuxa="tmux attach"
 alias tmuxn="tmux new"
 alias cd="pushd . > /dev/null; cd"
@@ -94,7 +103,8 @@ alias du="du -h"
 alias nao="telnet nethack.alt.org"
 alias ecc="emacsclient -n -c"
 alias ec="emacsclient -nw"
-[ -d $HOME/bin ] && export PATH=$PATH:$HOME/bin
+alias mg="mg -n"
+
 #
 # Setting a good value for $EDITOR and $BROWSER
 #
@@ -102,7 +112,8 @@ have() { type "$@" >/dev/null 2>&1; }
 
 EDITOR="vi"   
 have vim && EDITOR="vim"
-have emacsclient && EDITOR="emacsclient -n -c"
+have mg && EDITOR="mg"
+export EDITOR
 
 BROWSER="lynx"
 have firefox && BROWSER="firefox"
@@ -111,12 +122,22 @@ have epiphany-browser && BROWSER="epiphany-browser"
 have google-chrome && BROWSER="google-chrome"
 have sensible-browser && BROWSER="sensible-browser"
 have x-www-browser && BROWSER="x-www-browser"
+export BROWSER
+
+[ -d $HOME/bin ] && export PATH=$PATH:$HOME/bin
+
 #
-# Go specifics
+# Adding Cabal root to PATH if it exists
 #
+
 if [ -d $HOME/.cabal ]; then
     export PATH=$PATH:$HOME/.cabal/bin
 fi
+
+#
+# Setting necessary Go variables
+#
+
 if [ -d $HOME/src/go ]; then
     . ~/.go.sh
     if [ -n $GOARCH -a -n $GOOS ]; then
@@ -124,18 +145,24 @@ if [ -d $HOME/src/go ]; then
         export GOBIN=$HOME/bin
     fi
 fi
+
 #
-# J crap
+# Setting up J
 #
+
 if [ -d $HOME/src/jlang ]; then
     export JROOT=$HOME/src/jlang
     export PATH=$PATH:$JROOT/bin
 fi
+
 #
-# Local changes go there
+# Local changes go in this file
 #
+
 [ -f $HOME/.bash.local ] && . $HOME/.bash.local
+
 #
 # Run fortune
 #
+
 fortune $FORTUNE_SET
