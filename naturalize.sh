@@ -34,32 +34,33 @@ ksh() {
 bash() {
     backup_and_link ".bash_profile"
     backup_and_link ".bashrc"
+    backup_and_link ".bash"
 }
 
-tmux() {
-    backup_and_link ".tmux.conf"
-}
+# tmux() {
+#     backup_and_link ".tmux.conf"
+# }
 
-screen() {
-    backup_and_link ".screenrc"
-}
+# screen() {
+#     backup_and_link ".screenrc"
+# }
 
-vim() {
-    backup_and_link ".vimrc"
-}
+# vim() {
+#     backup_and_link ".vimrc"
+# }
 
-emacs() {
-    backup_and_link ".emacs"
-}
+# emacs() {
+#     backup_and_link ".emacs"
+# }
 
-xsession() {
-    backup_and_link ".xsession"
-}
+# xsession() {
+#     backup_and_link ".xsession"
+# }
 
 [ $1 = 'ksh' ] && ksh
 [ $1 = 'bash' ] && bash
-[ $1 = 'tmux' ] && tmux
-[ $1 = 'screen' ] && screen
-[ $1 = 'vim' ] && vim
-[ $1 = 'emacs' ] && emacs
-[ $1 = 'xsession' ] && xsession
+# [ $1 = 'tmux' ] && tmux
+# [ $1 = 'screen' ] && screen
+# [ $1 = 'vim' ] && vim
+# [ $1 = 'emacs' ] && emacs
+# [ $1 = 'xsession' ] && xsession
