@@ -57,8 +57,8 @@
 ;; Magit, a git mode
 ;;;;
 ;;
-(require 'magit)
-(global-set-key (kbd "<f6>") 'magit-status)
+;;(require 'magit)
+;;(global-set-key (kbd "<f6>") 'magit-status)
 ;;
 ;;;;
 ;; Midnight
@@ -131,7 +131,8 @@
  '(tool-bar-mode nil)
  '(tooltip-mode nil)
  '(tramp-encoding-shell "/bin/bash")
- '(tramp-verbose 0))
+ '(tramp-verbose 0)
+ '(visible-bell t))
 
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
