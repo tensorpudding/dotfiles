@@ -10,6 +10,7 @@
 (add-to-list 'load-path "~/.emacs.d/clojure-mode/")
 ;; (add-to-list 'load-path "~/.emacs.d/swank-clojure/src/emacs/")
 (add-to-list 'load-path "~/.emacs.d/ProofGeneral/")
+(add-to-list 'load-path "~/.emacs.d/go/")
 (require 'clojure-mode)
 ;; (require 'swank-clojure-autoload)
 (load "haskell-mode/haskell-site-file")
@@ -46,6 +47,7 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 ;; (add-hook 'org-mode-hook 'turn-on-font-lock)
+(require 'go-mode-load)
 ;;
 ;;;;
 ;; Fixing stupid ruby
