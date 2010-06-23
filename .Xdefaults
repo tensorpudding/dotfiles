@@ -31,3 +31,4 @@ URxvt.urlLauncher: x-www-browser
 URxvt.matcher.button: 1
 URxvt.color15: #eeeeec
 Emacs.FontBackend: xft
+Emacs.font: Anonymous Pro-14
