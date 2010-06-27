@@ -12,7 +12,8 @@
 ;; (add-to-list 'load-path "~/.emacs.d/swank-clojure/src/emacs/") ;; Clojure for swank
 (add-to-list 'load-path "~/.emacs.d/ProofGeneral/") ;; Proof General environment
 (add-to-list 'load-path "~/.emacs.d/go/") ;; Go mode
-(add-to-list 'load-path "~/.emacs.d/ess/") ;; Emacs for Statistics (GNU R)
+(add-to-list 'load-path "~/.emacs.d/ess/") ;; Emacs Speaks Statistics (GNU R)
+
 ;;
 ;;;;
 ;; Loading Elisp files
@@ -25,9 +26,7 @@
 (load "tuareg/tuareg.el") ;; Loading Tuareg
 (load-file "~/.emacs.d/ProofGeneral/generic/proof-site.el") ;; ProofGeneral
 (load "~/.emacs.d/ess/lisp/ess-site") ;; Loading ESS (GNU R)
-;; (load "coq.el") ;; Coq, broken by ProofGeneral
-;; (load "inferior-coq.el")
-(require 'go-mode-load)
+(require 'go-mode-load) ;; Loading Go mode
 
 ;; AUCTeX requires to be installed and all that shit
 (load "/usr/local/share/emacs/site-lisp/auctex.el" nil t t)
@@ -41,13 +40,6 @@
 ;;;;
 ;;
 
-;;   (setq auto-mode-alist (cons '("\\.v$" . coq-mode) auto-mode-alist))
-;;   (autoload 'coq-mode "coq" "Major mode for editing Coq vernacular." t)
-;; (autoload 'run-coq "inferior-coq" "Run an inferior Coq process." t)
-;; (autoload 'run-coq-other-window "inferior-coq"
-;;   "Run an inferior Coq process in a new window." t)
-;; (autoload 'run-coq-other-frame "inferior-coq"
-;;   "Run an inferior Coq process in a new frame." t)
 (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
 (autoload 'camldebug "camldebug" "Run the Caml debugger" t)
 (autoload 'd-mode "d-mode" "Major mode for editing D code." t)
@@ -60,65 +52,74 @@
 (add-to-list 'auto-mode-alist '("\\.[hg]s$" . haskell-mode))
 (add-to-list 'auto-mode-alist '("\\.[hi]$" . haskell-mode))
 (add-to-list 'auto-mode-alist '("\\.l[hg]s$" . literate-haskell-mode))
-;; (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 ;; (add-hook 'org-mode-hook 'turn-on-font-lock)
-
-
-;; Hacks and other things
-
-
 
 ;;
 ;;;;
 ;; Fixing stupid ruby
 ;;;;
 ;;
+
 (setq ruby-program-name "irb --inf-ruby-mode -f")
+
 ;;
 ;;;;
 ;; Magit, a git mode
 ;;;;
 ;;
+
 ;;(require 'magit)
 ;;(global-set-key (kbd "<f6>") 'magit-status)
+
 ;;
 ;;;;
 ;; Midnight
 ;;;;
 ;;
+
 (require 'midnight)
+
 ;;
 ;;;;
 ;; ERC truncating automatically
 ;;;;
 ;;
+
 (setq erc-truncate-buffer-on-save t)
+
 ;;
 ;;;;
 ;; Hpaste.el: hpaste integration for emacs
 ;;;;
 ;;
+
 (require 'hpaste)
+
 ;;
 ;;;;
 ;; Starting emacs as a server
 ;;;;
 ;;
+
 (server-start)
+
 ;;
 ;;;;
 ;; Set color for cursor (needed for Windows Emacs 23.2)
 ;;;;
 ;;
+
 (set-cursor-color "white")
+
 ;;
 ;;;;
 ;; Customized Variables/Faces
 ;;;;
 ;;
+
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
