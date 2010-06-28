@@ -131,6 +131,7 @@
  '(column-number-mode t)
  '(comment-style (quote plain))
  '(display-time-mode t)
+ '(dvc-tips-enabled nil)
  '(ecb-options-version "2.32")
  '(erc-autojoin-channels-alist (quote (("freenode.net" "#emacs" "#coq" "##freebsd" "#ruby-lang" "#xmonad" "#haskell" "#haskell-blah" "#math"))))
  '(erc-autojoin-mode t)
