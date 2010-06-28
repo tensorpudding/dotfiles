@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 #
 # Setting OS-specific paths, command aliases and other variables
 #
@@ -25,12 +24,15 @@ case $OS in
         export PATH=/bin:/usr/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin:/usr/games/:/usr/local/games
         export FORTUNE_SET="freebsd-tips"
         export FTP_PASSIVE_MODE=YES
-        alias pkg_add="pkg_add -r -v"
+        alias pkg_add="pkg_add -r"
         alias mv="mv -v"
         alias cp="cp -v"
         alias mkdir="mkdir -v"
         alias ln="ln -v"      
-        alias ls="ls -FG"
+	if [ ${TERM} != "dumb" ]; then
+            alias ls="ls -FG"
+	    alias grep="grep --color=auto"
+	fi
         ;;
     Linux)
 	export PATH=/bin:/usr/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin:/usr/games/:/usr/local/games

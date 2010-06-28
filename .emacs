@@ -3,26 +3,44 @@
 ;; Setting load path
 ;;;;
 ;;
-(add-to-list 'load-path "~/.emacs.d/")
-(add-to-list 'load-path "~/.emacs.d/haskell-mode/")
-(add-to-list 'load-path "~/.emacs.d/tuareg/")
-(add-to-list 'load-path "~/.emacs.d/d-mode/")
-(add-to-list 'load-path "~/.emacs.d/clojure-mode/")
-;; (add-to-list 'load-path "~/.emacs.d/swank-clojure/src/emacs/")
-(add-to-list 'load-path "~/.emacs.d/ProofGeneral/")
-(add-to-list 'load-path "~/.emacs.d/go/")
-(require 'clojure-mode)
-;; (require 'swank-clojure-autoload)
-(load "haskell-mode/haskell-site-file")
-(load "tuareg/tuareg.el")
-(load-file "~/.emacs.d/ProofGeneral/generic/proof-site.el")
-;; (load "coq.el")
+
+(add-to-list 'load-path "~/.emacs.d/") ;; Base loadpath
+(add-to-list 'load-path "~/.emacs.d/haskell-mode/") ;; Haskell major modes
+(add-to-list 'load-path "~/.emacs.d/tuareg/") ;; Tuareg Ocaml mode
+(add-to-list 'load-path "~/.emacs.d/d-mode/") ;; D mode
+(add-to-list 'load-path "~/.emacs.d/clojure-mode/") ;; Clojure mode
+;; (add-to-list 'load-path "~/.emacs.d/swank-clojure/src/emacs/") ;; Clojure for swank
+(add-to-list 'load-path "~/.emacs.d/ProofGeneral/") ;; Proof General environment
+(add-to-list 'load-path "~/.emacs.d/go/") ;; Go mode
+(add-to-list 'load-path "~/.emacs.d/ess/") ;; Emacs for Statistics (GNU R)
+;;
+;;;;
+;; Loading Elisp files
+;;;;
+;;
+
+(require 'clojure-mode) ;; Loading Clojure mode
+;; (require 'swank-clojure-autoload) ;; Loading Clojure for swank
+(load "haskell-mode/haskell-site-file") ;; Loading Haskell major mode
+(load "tuareg/tuareg.el") ;; Loading Tuareg
+(load-file "~/.emacs.d/ProofGeneral/generic/proof-site.el") ;; ProofGeneral
+(load "~/.emacs.d/ess/lisp/ess-site") ;; Loading ESS (GNU R)
+;; (load "coq.el") ;; Coq, broken by ProofGeneral
 ;; (load "inferior-coq.el")
+(require 'go-mode-load)
+
+;; AUCTeX requires to be installed and all that shit
+(load "/usr/local/share/emacs/site-lisp/auctex.el" nil t t)
+(load "/usr/local/share/emacs/site-lisp/preview-latex.el" nil t t)
+;; DVC compiled in .emacs.d
+(load "~/.emacs.d/dvc/++build/dvc-load.el")
+
 ;;
 ;;;;
-;; Language major modes
+;; Language major modes autoloads and config
 ;;;;
 ;;
+
 ;;   (setq auto-mode-alist (cons '("\\.v$" . coq-mode) auto-mode-alist))
 ;;   (autoload 'coq-mode "coq" "Major mode for editing Coq vernacular." t)
 ;; (autoload 'run-coq "inferior-coq" "Run an inferior Coq process." t)
@@ -47,7 +65,12 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 ;; (add-hook 'org-mode-hook 'turn-on-font-lock)
-(require 'go-mode-load)
+
+
+;; Hacks and other things
+
+
+
 ;;
 ;;;;
 ;; Fixing stupid ruby
