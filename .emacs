@@ -108,7 +108,7 @@
  '(comment-style (quote plain))
  '(display-time-mode t)
  '(ecb-options-version "2.32")
- '(erc-autojoin-channels-alist (quote (("freenode.net" "#emacs" "#coq" "##freebsd" "#debian" "#ruby-lang" "#xmonad" "#haskell" "#haskell-blah" "#math"))))
+ '(erc-autojoin-channels-alist (quote (("freenode.net" "#emacs" "#coq" "##freebsd" "#ruby-lang" "#xmonad" "#haskell" "#haskell-blah" "#math"))))
  '(erc-autojoin-mode t)
  '(erc-insert-post-hook (quote (erc-truncate-buffer erc-make-read-only erc-track-modified-channels erc-truncate-buffer)))
  '(erc-join-buffer (quote bury))
