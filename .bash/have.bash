@@ -14,6 +14,7 @@ export EDITOR
 BROWSER="lynx"
 have elinks && BROWSER="elinks"
 have firefox && BROWSER="firefox"
+have opera && BROWSER="opera"
 have chromium && BROWSER="chromium"
 have google-chrome && BROWSER="google-chrome"
 export BROWSER
