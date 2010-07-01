@@ -1,3 +1,5 @@
 [ui]
 username = Michael <michael.l.moorman@gmail.com>
 ignore = ~/.hgignore
+[extensions]
+mq =
