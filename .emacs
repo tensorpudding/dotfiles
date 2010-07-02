@@ -144,6 +144,7 @@
  '(erc-port 6667)
  '(erc-server "irc.freenode.net")
  '(erc-truncate-mode t)
+ '(erc-try-new-nick-p nil)
  '(fringe-mode 0 nil (fringe))
  '(ido-mode (quote both) nil (ido))
  '(inhibit-startup-screen t)
