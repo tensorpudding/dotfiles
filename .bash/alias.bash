@@ -4,8 +4,9 @@
 # Universal aliases
 #
 
-alias tmuxa="tmux attach"
-alias tmuxn="tmux new"
+#alias tmuxa="tmux attach"
+#alias tmuxn="tmux new"
+alias tmux="~/.bash/tmux.sh"
 alias cd="pushd . > /dev/null; cd"
 alias pd="popd &> /dev/null"
 alias df="df -h"
