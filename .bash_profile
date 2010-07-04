@@ -9,6 +9,7 @@ source $HOME/.bash/have.bash
 source $HOME/.bash/go.bash
 source $HOME/.bash/j.bash
 source $HOME/.bash/gnustep.bash
+source $HOME/.bash/emacs.bash
 
 [ -d $HOME/bin ] && export PATH=$PATH:$HOME/bin
 [ -d $HOME/.cabal ] && export PATH=$PATH:$HOME/.cabal/bin
