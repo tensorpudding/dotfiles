@@ -84,6 +84,14 @@
 
 ;;
 ;;;;
+;; Flymake mode
+;;;;
+;;
+
+;; (add-hook 'find-file-hook 'flymake-find-file-hook)
+
+;;
+;;;;
 ;; ERC truncating automatically
 ;;;;
 ;;
