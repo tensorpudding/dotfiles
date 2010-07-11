@@ -42,3 +42,8 @@ dist/*
 
 *.z5
 *.z8
+
+# Ignore Visual C++ crap
+
+*.obj
+*.exe
