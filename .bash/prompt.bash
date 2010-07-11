@@ -4,8 +4,8 @@
 # If we're in a chroot, display a special prompt, otherwise display default
 #
 
-case $USER in
-    root)
+case $UID in
+    0)
         h="\[\e[1;37m\]\h\[\e[m\]"
         w="\[\e[1;37m\]\W# \[\e[m\]"
         at="\[\e[1;37m\]@\[\e[m\]"
