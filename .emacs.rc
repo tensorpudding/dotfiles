@@ -73,7 +73,10 @@
 
 ;; Loading DVC
 (when dvc-enabled
-  (load (concat dvc-elisp-dir "++build/dvc-load.el")))
+  (add-to-list 'load-path dvc-elisp-dir)
+  (if (equal (getenv "OS") "Windows_NT")
+      (require 'dvc-autoloads)
+    (load (concat dvc-elisp-dir "++build/dvc-load.el"))))
 
 ;; Loading CEDET
 (when cedet-enabled
