@@ -38,6 +38,7 @@
 (setq midnight-enabled t)
 (setq erc-truncate-buffer-on-save t)
 (setq hpaste-enabled t)
+(setq linum-enabled t)
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.

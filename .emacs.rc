@@ -104,3 +104,6 @@
 
 ;; Loading hpaste
 (when hpaste-enabled (require 'hpaste))
+
+;; Loading Linum globally
+(when linum-enabled (global-linum-mode 1))
