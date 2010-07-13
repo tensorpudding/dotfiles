@@ -1,132 +1,43 @@
-;;
-;;;;
-;; Setting load path
-;;;;
-;;
-
-(add-to-list 'load-path "~/.emacs.d/") ;; Base loadpath
-(add-to-list 'load-path "~/.emacs.d/haskell-mode/") ;; Haskell major modes
-(add-to-list 'load-path "~/.emacs.d/tuareg/") ;; Tuareg Ocaml mode
-(add-to-list 'load-path "~/.emacs.d/d-mode/") ;; D mode
-(add-to-list 'load-path "~/.emacs.d/clojure-mode/") ;; Clojure mode
-;; (add-to-list 'load-path "~/.emacs.d/swank-clojure/src/emacs/") ;; Clojure for swank
-(add-to-list 'load-path "~/.emacs.d/ProofGeneral/") ;; Proof General environment
-(add-to-list 'load-path "~/.emacs.d/go/") ;; Go mode
-(add-to-list 'load-path "~/.emacs.d/ess/") ;; Emacs Speaks Statistics (GNU R)
-
-;;
-;;;;
-;; Loading Elisp files
-;;;;
-;;
-
-(require 'clojure-mode) ;; Loading Clojure mode
-;; (require 'swank-clojure-autoload) ;; Loading Clojure for swank
-(load "haskell-mode/haskell-site-file") ;; Loading Haskell major mode
-(load "tuareg/tuareg.el") ;; Loading Tuareg
-(load-file "~/.emacs.d/ProofGeneral/generic/proof-site.el") ;; ProofGeneral
-(load "~/.emacs.d/ess/lisp/ess-site") ;; Loading ESS (GNU R)
-(require 'go-mode-load) ;; Loading Go mode
-
-;; AUCTeX requires to be installed and all that shit
-(load "/usr/local/share/emacs/site-lisp/auctex.el" nil t t)
-(load "/usr/local/share/emacs/site-lisp/preview-latex.el" nil t t)
-;; DVC compiled in .emacs.d
-(load "~/.emacs.d/dvc/++build/dvc-load.el")
-
-;;
-;;;;
-;; Language major modes autoloads and config
-;;;;
-;;
-
-(autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
-(autoload 'camldebug "camldebug" "Run the Caml debugger" t)
-(autoload 'd-mode "d-mode" "Major mode for editing D code." t)
-(autoload 'haskell-mode "haskell-mode" "Major mode for editing Haskell" t)
-(autoload 'literate-haskell-mode "haskell-mode" 
-  "Major mode for editing literate Haskell" t)
-(add-to-list 'auto-mode-alist '("\\.d[i]?\\'" . d-mode))
-(add-to-list 'auto-mode-alist '("\\.ml$" . tuareg-mode))
-;; (add-to-list 'auto-mode-alist '("\\.rhtml\\w?" . html-mode))
-(add-to-list 'auto-mode-alist '("\\.[hg]s$" . haskell-mode))
-(add-to-list 'auto-mode-alist '("\\.[hi]$" . haskell-mode))
-(add-to-list 'auto-mode-alist '("\\.l[hg]s$" . literate-haskell-mode))
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
-;; (add-hook 'org-mode-hook 'turn-on-font-lock)
-
-;;
-;;;;
-;; Fixing stupid ruby
-;;;;
-;;
-
+(setq elisp-dir "~/.emacs.d/")
+(setq haskell-enabled t)
+(setq haskell-elisp-dir "~/.emacs.d/haskell-mode/")
+(setq tuareg-enabled t)
+(setq tuareg-elisp-dir "~/.emacs.d/tuareg/")
+(setq d-enabled t)
+(setq d-elisp-dir "~/.emacs.d/d-mode/")
+(setq proof-enabled t)
+(setq proof-elisp-dir "~/.emacs.d/ProofGeneral/")
+(setq clojure-enabled t)
+(setq clojure-elisp-dir "~/.emacs.d/clojure-mode/")
+(setq swank-clojure-enabled nil)
+(setq swank-clojure-elisp-dir "")
+(setq go-enabled t)
+(setq go-elisp-dir "~/.emacs.d/go/")
+(setq ess-enabled t)
+(setq ess-elisp-dir "~/.emacs.d/ess/")
+(setq rinari-enabled t)
+(setq rinari-elisp-dir "~/.emacs.d/rinari/")
+(setq ecb-enabled t)
+(setq ecb-elisp-dir "~/.emacs.d/ecb/")
+(setq erlang-enabled t)
+(setq erlang-root-dir "/usr/local/lib/erlang/")
+(setq erlang-tools-version "2.6.5.1")
+(setq auctex-enabled t)
+(setq auctex-elisp-dir "/usr/local/share/emacs/site-lisp/")
+(setq dvc-enabled t)
+(setq dvc-elisp-dir "~/.emacs.d/dvc/")
+(setq cedet-enabled t)
+(setq cedet-elisp-dir "~/.emacs.d/cedet/")
+(setq cedet-ede-enabled t)
+(setq cedet-completion-enabled t)
+(setq cedet-template-enabled t)
+(setq magit-enabled nil)
+(setq magit-elisp-dir "")
 (setq ruby-program-name "irb --inf-ruby-mode -f")
-
-;;
-;;;;
-;; Magit, a git mode
-;;;;
-;;
-
-;;(require 'magit)
-;;(global-set-key (kbd "<f6>") 'magit-status)
-
-;;
-;;;;
-;; Midnight
-;;;;
-;;
-
-(require 'midnight)
-
-;;
-;;;;
-;; Flymake mode
-;;;;
-;;
-
-;; (add-hook 'find-file-hook 'flymake-find-file-hook)
-
-;;
-;;;;
-;; ERC truncating automatically
-;;;;
-;;
-
+(setq flymake-enabled nil)
+(setq midnight-enabled t)
 (setq erc-truncate-buffer-on-save t)
-
-;;
-;;;;
-;; Hpaste.el: hpaste integration for emacs
-;;;;
-;;
-
-(require 'hpaste)
-
-;;
-;;;;
-;; Starting emacs as a server
-;;;;
-;;
-
-(server-start)
-
-;;
-;;;;
-;; Set color for cursor (needed for Windows Emacs 23.2)
-;;;;
-;;
-
-(set-cursor-color "white")
-
-;;
-;;;;
-;; Customized Variables/Faces
-;;;;
-;;
+(setq hpaste-enabled t)
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
@@ -137,6 +48,8 @@
  '(TeX-output-view-style (quote (("^dvi$" ("^landscape$" "^pstricks$\\|^pst-\\|^psfrag$") "%(o?)dvips -t landscape %d -o && gv %f") ("^dvi$" "^pstricks$\\|^pst-\\|^psfrag$" "%(o?)dvips %d -o && gv %f") ("^dvi$" ("^\\(?:a4\\(?:dutch\\|paper\\|wide\\)\\|sem-a4\\)$" "^landscape$") "%(o?)xdvi %dS -paper a4r -s 0 %d") ("^dvi$" "^\\(?:a4\\(?:dutch\\|paper\\|wide\\)\\|sem-a4\\)$" "%(o?)xdvi %dS -paper a4 %d") ("^dvi$" ("^\\(?:a5\\(?:comb\\|paper\\)\\)$" "^landscape$") "%(o?)xdvi %dS -paper a5r -s 0 %d") ("^dvi$" "^\\(?:a5\\(?:comb\\|paper\\)\\)$" "%(o?)xdvi %dS -paper a5 %d") ("^dvi$" "^b5paper$" "%(o?)xdvi %dS -paper b5 %d") ("^dvi$" "^letterpaper$" "%(o?)xdvi %dS -paper us %d") ("^dvi$" "^legalpaper$" "%(o?)xdvi %dS -paper legal %d") ("^dvi$" "^executivepaper$" "%(o?)xdvi %dS -paper 7.25x10.5in %d") ("^dvi$" "." "%(o?)xdvi %dS %d") ("^pdf$" "." "evince %o %(outpage)") ("^html?$" "." "netscape %o"))))
  '(backup-directory-alist (quote (("." . "/home/michael/.emacs.d/backups"))))
  '(blink-cursor-mode nil)
+ '(browse-url-browser-function (quote browse-url-generic))
+ '(browse-url-generic-program "uzbl-browser")
  '(column-number-mode t)
  '(comment-style (quote plain))
  '(display-time-mode t)
@@ -183,3 +96,5 @@
  '(erc-nick-default-face ((t (:foreground "light steel blue" :weight bold))))
  '(erc-notice-face ((t (:foreground "LightSlateBlue" :weight bold))))
  '(ido-first-match ((t (:foreground "lightblue" :weight bold)))))
+
+(load "~/.emacs.rc")
