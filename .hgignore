@@ -21,7 +21,8 @@ a.out
 6.out
 *.aux
 *.class
-
+*.beam
+hg
 # AucTeX preview-buffer generated crap 
 
 _region_*
