@@ -5,8 +5,8 @@
 #
 
 if [ -d $HOME/src/go ]; then
-    OS="`uname -s`"
-    ARCH="`uname -m`"
+    OS=$(uname -s)
+    ARCH=$(uname -m)
 # Only the os that Go claims to support
     case $OS in
 	Linux)
