@@ -40,6 +40,7 @@
 (setq hpaste-enabled t)
 (setq linum-enabled t)
 (setq require-final-newline t)
+(setq agda-enabled t)
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
