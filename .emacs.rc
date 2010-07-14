@@ -107,3 +107,8 @@
 
 ;; Loading Linum globally
 (when linum-enabled (global-linum-mode 1))
+
+;; Loading Agda mode
+(when agda-enabled
+  (load-file (let ((coding-system-for-read 'utf-8))
+	       (shell-command-to-string "agda-mode locate"))))
