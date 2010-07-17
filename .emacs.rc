@@ -112,3 +112,14 @@
 (when agda-enabled
   (load-file (let ((coding-system-for-read 'utf-8))
 	       (shell-command-to-string "agda-mode locate"))))
+
+;; Loading Ri for Emacs
+(when ri-enabled
+  (setq ri-ruby-script 'ri-ruby-script-path)
+  (autoload 'ri 'ri-ruby-emacs-path nil t)
+  (add-hook 'ruby-mode-hook (lambda()
+			      (local-set-key 'f1 'ri)
+			      (local-set-key "\M-\C-i" 'ri-ruby-complete-symbol)
+			      (local-set-key 'f4 'ri-ruby-show-args)
+			      )))
+
