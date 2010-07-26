@@ -5,3 +5,5 @@ ignore = ~/.hgignore
 mq=
 fetch=
 hgext.record=
+bookmarks=
+hggit=
