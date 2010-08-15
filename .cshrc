@@ -3,10 +3,11 @@
 alias tmux      ~/.bash/tmux.sh
 alias cp        cp -v
 alias mv        mv -v
-alias ec        emacsclient -nw
-alias ecc       emacsclient -n -c
+alias ec        ~/bin/emacs.sh -nw
+alias ecc       ~/bin/emacs.sh -n -c
 alias mg        mg -n
-alias halt      halt -p
+alias halt      shutdown -p now
+alias reboot	shutdown -r now
 alias mkdir     mkdir -v
 alias pkg_add   pkg_add -r
 alias grep      grep --color=auto
@@ -19,10 +20,7 @@ setenv EDITOR vi
 setenv BROWSER uzbl-tabbed
 setenv PAGER less
 setenv BLOCKSIZE K
-setenv GOOS freebsd
-setenv GOARCH amd64
-setenv GOROOT $HOME/src/go
-setenv GOBIN $HOME/bin
+setenv UID 1001
 
 if ($?prompt) then
     if ($USER == root) then
@@ -63,5 +61,3 @@ complete limit 'p/1/l/'
 complete chown 'p/1/u/'
 
 #
-
-fortune freebsd-tips
