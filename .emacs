@@ -52,7 +52,7 @@
  '(backup-directory-alist (quote (("." . "/home/michael/.emacs.d/backups"))))
  '(blink-cursor-mode nil)
  '(browse-url-browser-function (quote browse-url-generic))
- '(browse-url-generic-program "uzbl-browser")
+ '(browse-url-generic-program "google-chrome")
  '(column-number-mode t)
  '(comment-style (quote plain))
  '(display-time-mode t)
