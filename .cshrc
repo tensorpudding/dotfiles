@@ -16,11 +16,9 @@ alias ln        ln -v
 
 set path = (/sbin /bin /usr/sbin /usr/bin /usr/games /usr/local/sbin /usr/local/bin /usr/local/games $HOME/bin)
 
-setenv EDITOR vi
-setenv BROWSER uzbl-tabbed
+setenv EDITOR mg
 setenv PAGER less
 setenv BLOCKSIZE K
-setenv UID 1001
 
 if ($?prompt) then
     if ($USER == root) then
