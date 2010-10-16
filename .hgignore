@@ -48,3 +48,11 @@ dist/*
 
 *.obj
 *.exe
+
+# Ignore MonoDevelop's noise
+
+*/gtk-gui/*.cs
+bin/Debug/*
+*.userprefs
+*.usertasks
+*.pidb
