@@ -1,47 +1,129 @@
-(setq elisp-dir "~/.emacs.d/")
-(setq haskell-enabled t)
-(setq haskell-elisp-dir "~/.emacs.d/haskell-mode/")
-(setq tuareg-enabled t)
-(setq tuareg-elisp-dir "~/.emacs.d/tuareg/")
-(setq d-enabled t)
-(setq d-elisp-dir "~/.emacs.d/d-mode/")
-(setq proof-enabled t)
-(setq proof-elisp-dir "~/.emacs.d/ProofGeneral/")
-(setq clojure-enabled t)
-(setq clojure-elisp-dir "~/.emacs.d/clojure-mode/")
-(setq swank-clojure-enabled nil)
-(setq swank-clojure-elisp-dir "")
-(setq go-enabled t)
-(setq go-elisp-dir "~/.emacs.d/go/")
-(setq ess-enabled t)
-(setq ess-elisp-dir "~/.emacs.d/ess/")
-(setq rinari-enabled t)
-(setq rinari-elisp-dir "~/.emacs.d/rinari/")
-(setq ecb-enabled t)
-(setq ecb-elisp-dir "~/.emacs.d/ecb/")
-(setq erlang-enabled t)
-(setq erlang-root-dir "/usr/local/lib/erlang/")
-(setq erlang-tools-version "2.6.5.1")
-(setq auctex-enabled t)
-(setq auctex-elisp-dir "/usr/local/share/emacs/site-lisp/")
-(setq dvc-enabled t)
-(setq dvc-elisp-dir "~/.emacs.d/dvc/")
-(setq cedet-enabled t)
-(setq cedet-elisp-dir "~/.emacs.d/cedet/")
-(setq cedet-ede-enabled t)
-(setq cedet-completion-enabled t)
-(setq cedet-template-enabled t)
-(setq magit-enabled nil)
-(setq magit-elisp-dir "")
+;; -*-Lisp-*-
+;;
+;; Load elisp dir
+;;
+(setq elisp-dir "~/.elisp/")
+(add-to-list 'load-path elisp-dir)
+;;
+;; Load Haskell mode
+;;
+(setq haskell-elisp-dir (concat elisp-dir "haskell-mode/"))
+(add-to-list 'load-path haskell-elisp-dir)
+(load (concat haskell-elisp-dir "haskell-site-file.el"))
+(autoload 'haskell-mode "haskell-mode" "Major mode for editing Haskell" t)
+(autoload 'literate-haskell-mode "haskell-mode" 
+  "Major mode for editing literate Haskell" t)
+(add-to-list 'auto-mode-alist '("\\.[hg]s$" . haskell-mode))
+(add-to-list 'auto-mode-alist '("\\.l[hg]s$" . literate-haskell-mode))
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
+;;
+;; Load OCaml major mode (Tuareg)
+;;
+(setq tuareg-elisp-dir (concat elisp-dir "tuareg/"))
+(add-to-list 'load-path tuareg-elisp-dir)
+(load (concat tuareg-elisp-dir "tuareg.el"))
+(autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
+(autoload 'camldebug "camldebug" "Run the Caml debugger" t)
+(add-to-list 'auto-mode-alist '("\\.ml$" . tuareg-mode))
+;;
+;; Load D major mode
+;;
+(setq d-elisp-dir (concat elisp-dir "d-mode/"))
+(add-to-list 'load-path d-elisp-dir)
+(autoload 'd-mode "d-mode" "Major mode for editing D code." t)
+(add-to-list 'auto-mode-alist '("\\.d[i]?\\'" . d-mode))
+;;
+;; Load Go major mode
+;;
+(setq go-elisp-dir (concat elisp-dir "go/"))
+(add-to-list 'load-path go-elisp-dir)
+(require 'go-mode-load)
+;;
+;; Load Clojure major mode
+;;
+;; (setq clojure-elisp-dir (concat elisp-dir "clojure-mode/"))
+;; (add-to-list 'load-path clojure-elisp-dir)
+;; (require 'clojure-mode)
+;;
+;; Load Yacc major mode
+;;
+(setq yacc-elisp-dir (concat elisp-dir "yacc-mode/"))
+(add-to-list 'load-path yacc-elisp-dir)
+(autoload 'yacc-mode "yacc.el")
+(add-to-list 'auto-mode-alist '("\\.y$" . yacc-mode))
+;;
+;; Load ProofGeneral
+;;
+(setq proof-elisp-dir (concat elisp-dir "ProofGeneral/"))
+(add-to-list 'load-path proof-elisp-dir)
+(load-file (concat proof-elisp-dir "generic/proof-site.el"))
+;;
+;; Load ESS (Emacs Speaks Statistics)
+;;
+(setq ess-elisp-dir (concat elisp-dir "ess/"))
+(add-to-list 'load-path ess-elisp-dir)
+(load (concat ess-elisp-dir "lisp/ess-site"))
+;;
+;; Load Rinari
+;;
+;; (setq rinari-elisp-dir (concat elisp-dir "rinari/"))
+;; (add-to-list 'load-path rinari-elisp-dir)
+;; (require 'rinari)
+;;
+;; Load ECB (Emacs Code Browser)
+;;
+;; (setq ecb-elisp-dir (concat elisp-dir "ecb/"))
+;; (add-to-list 'load-path ecb-elisp-dir)
+;; (require 'ecb)
+;;
+;; Load AUCTeX
+;;
+;; (setq auctex-elisp-dir (concat elisp-dir "auctex/"))
+;; (load (concat auctex-elisp-dir "auctex.el") nil t t)
+;; (load (concat auctex-elisp-dir "preview-latex.el") nil t t)
+;;
+;; Load DVC (Distributed Version Control)
+;;
+;; (setq dvc-elisp-dir (concat elisp-dir "dvc/"))
+;; (add-to-list 'load-path (concat dvc-elisp-dir "lisp/"))
+;; (add-to-list 'Info-default-directory-list (concat dvc-elisp-dir "texinfo/"))
+;; (require 'dvc-autoloads)
+;;
+;; Load CEDET (Common Emacs Development Environment)
+;;
+;; (setq cedet-elisp-dir (concat elisp-dir "cedet/"))
+;; (setq cedet-ede-enabled t)
+;; (setq cedet-completion-enabled t)
+;; (setq cedet-template-enabled t)
+;; (load-file (concat cedet-elisp-dir "common/cedet.el"))
+;; (when cedet-ede-enabled (global-ede-mode 1))
+;; (when cedet-completion-enabled (semantic-load-enable-code-helpers))
+;; (when cedet-template-enabled (global-srecode-minor-mode 1))
+;;
+;; Load Flymake
+;;
+;; (add-hook 'find-file-hook flymake-find-file-hook)
+;;
+;; Load midnight
+;;
+(require 'midnight)
+;;
+;; Enable Linux (line numbering) globally
+;;
+(global-linum-mode 1)
+;;
+;; Set ruby program
+;; 
 (setq ruby-program-name "irb --inf-ruby-mode -f")
-(setq flymake-enabled nil)
-(setq midnight-enabled t)
-(setq erc-truncate-buffer-on-save t)
-(setq hpaste-enabled t)
-(setq linum-enabled t)
+;;
+;; Require final newline
+;;
 (setq require-final-newline t)
-(setq agda-enabled t)
-
+;;
+;; Set variables
+;;
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
@@ -58,7 +140,7 @@
  '(display-time-mode t)
  '(dvc-tips-enabled nil)
  '(ecb-options-version "2.32")
- '(erc-autojoin-channels-alist (quote (("freenode.net" "#emacs" "#coq" "##freebsd" "#ruby-lang" "#xmonad" "#haskell" "#haskell-blah" "#math"))))
+ '(erc-autojoin-channels-alist (quote (("freenode.net" "##freebsd" "#go-nuts" "#python" "#haskell" "#ruby-lang" "#clojure" "#debian" "##linux" "#haskell-blah" "#math" "#ubuntu"))))
  '(erc-autojoin-mode t)
  '(erc-insert-post-hook (quote (erc-truncate-buffer erc-make-read-only erc-track-modified-channels erc-truncate-buffer)))
  '(erc-join-buffer (quote bury))
@@ -99,5 +181,3 @@
  '(erc-nick-default-face ((t (:foreground "light steel blue" :weight bold))))
  '(erc-notice-face ((t (:foreground "LightSlateBlue" :weight bold))))
  '(ido-first-match ((t (:foreground "lightblue" :weight bold)))))
-
-(load "~/.emacs.rc")
