@@ -5,6 +5,13 @@
 (setq elisp-dir "~/.elisp/")
 (add-to-list 'load-path elisp-dir)
 ;;
+;; Load jbo.el
+;;
+(setq jbo-dir (concat elisp-dir "jbo.el/"))
+(add-to-list 'load-path jbo-dir)
+(require 'jbo)
+(global-set-key (kbd "C-c M-l") 'jbo-lookup-at-point)
+;;
 ;; Load Haskell mode
 ;;
 (setq haskell-elisp-dir (concat elisp-dir "haskell-mode/"))
@@ -54,6 +61,12 @@
 (autoload 'yacc-mode "yacc.el")
 (add-to-list 'auto-mode-alist '("\\.y$" . yacc-mode))
 ;;
+;; Load Markdown major mode
+;;
+(setq mardown-elisp-dir (concat elisp-dir "markdown-mode/"))
+(autoload 'markdown-mode "markdown-mode.el")
+(add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+;;
 ;; Load ProofGeneral
 ;;
 (setq proof-elisp-dir (concat elisp-dir "ProofGeneral/"))
@@ -66,17 +79,45 @@
 (add-to-list 'load-path ess-elisp-dir)
 (load (concat ess-elisp-dir "lisp/ess-site"))
 ;;
+;; Load ELPA (Emacs packaging) with package.el
+;;
+(setq package-elisp-dir (concat elisp-dir "package.el/"))
+(add-to-list 'load-path package-elisp-dir)
+(load "package")
+(package-initialize)
+;;
+;; Load Emacs Privacy Assistant
+;;
+(require 'epa)
+(epa-file-enable)
+;;
 ;; Load Rinari
 ;;
 ;; (setq rinari-elisp-dir (concat elisp-dir "rinari/"))
 ;; (add-to-list 'load-path rinari-elisp-dir)
 ;; (require 'rinari)
 ;;
+;; Load CEDET (Common Emacs Development Environment)
+;;
+(setq cedet-elisp-dir (concat elisp-dir "cedet/"))
+(setq cedet-ede-enabled t)
+(setq cedet-completion-enabled t)
+(setq cedet-template-enabled t)
+(load-file (concat cedet-elisp-dir "common/cedet.el"))
+(when cedet-ede-enabled (global-ede-mode 1))
+(when cedet-completion-enabled (semantic-load-enable-code-helpers))
+(when cedet-template-enabled (global-srecode-minor-mode 1))
+;;
 ;; Load ECB (Emacs Code Browser)
 ;;
-;; (setq ecb-elisp-dir (concat elisp-dir "ecb/"))
-;; (add-to-list 'load-path ecb-elisp-dir)
-;; (require 'ecb)
+(setq ecb-elisp-dir (concat elisp-dir "ecb/"))
+(add-to-list 'load-path ecb-elisp-dir)
+(require 'ecb)
+;;
+;; Load nXhtml for webdev
+;;
+;; (setq nxhtml-elisp-dir (concat elisp-dir "nxhtml/"))
+;; (load-file (concat nxhtml-elisp-dir "autostart.el"))
 ;;
 ;; Load AUCTeX
 ;;
@@ -91,28 +132,23 @@
 ;; (add-to-list 'Info-default-directory-list (concat dvc-elisp-dir "texinfo/"))
 ;; (require 'dvc-autoloads)
 ;;
-;; Load CEDET (Common Emacs Development Environment)
-;;
-;; (setq cedet-elisp-dir (concat elisp-dir "cedet/"))
-;; (setq cedet-ede-enabled t)
-;; (setq cedet-completion-enabled t)
-;; (setq cedet-template-enabled t)
-;; (load-file (concat cedet-elisp-dir "common/cedet.el"))
-;; (when cedet-ede-enabled (global-ede-mode 1))
-;; (when cedet-completion-enabled (semantic-load-enable-code-helpers))
-;; (when cedet-template-enabled (global-srecode-minor-mode 1))
-;;
 ;; Load Flymake
 ;;
 ;; (add-hook 'find-file-hook flymake-find-file-hook)
 ;;
-;; Load midnight
+;; Session management
 ;;
+(desktop-save-mode t)
 (require 'midnight)
+(savehist-mode 1)
 ;;
-;; Enable Linux (line numbering) globally
+;; Enable linum (line numbering) globally, except where we don't want it.
 ;;
-(global-linum-mode 1)
+(setq linum-disabled-modes-list '(eshell-mode compilation-mode erc-mode apropos-mode Info-mode woman-mode))
+(defun linum-on ()
+  (unless (or (minibufferp)
+	      (member major-mode linum-disabled-modes-list))
+    (linum-mode 1)))
 ;;
 ;; Set ruby program
 ;; 
@@ -121,6 +157,10 @@
 ;; Require final newline
 ;;
 (setq require-final-newline t)
+;;
+;; Start server
+;;
+(server-start)
 ;;
 ;; Set variables
 ;;
@@ -140,7 +180,8 @@
  '(display-time-mode t)
  '(dvc-tips-enabled nil)
  '(ecb-options-version "2.32")
- '(erc-autojoin-channels-alist (quote (("freenode.net" "##freebsd" "#go-nuts" "#python" "#haskell" "#ruby-lang" "#clojure" "#debian" "##linux" "#haskell-blah" "#math" "#ubuntu"))))
+ '(ecb-tip-of-the-day nil)
+ '(erc-autojoin-channels-alist (quote (("freenode.net" "##crawl" "##freebsd" "#go-nuts" "#python" "#haskell" "#ruby-lang" "#clojure" "#debian" "#lojban" "##linux" "#haskell-blah" "#math" "#ubuntu" "#ubuntu-offtopic" "#emacs"))))
  '(erc-autojoin-mode t)
  '(erc-insert-post-hook (quote (erc-truncate-buffer erc-make-read-only erc-track-modified-channels erc-truncate-buffer)))
  '(erc-join-buffer (quote bury))
@@ -153,22 +194,22 @@
  '(erc-try-new-nick-p nil)
  '(fringe-mode 0 nil (fringe))
  '(ido-mode (quote both) nil (ido))
+ '(inferior-lisp-program "clojure -r")
  '(inhibit-startup-screen t)
- '(menu-bar-mode nil)
+ '(menu-bar-mode t)
  '(midnight-mode t nil (midnight))
  '(nil nil t)
  '(scheme-program-name "mzscheme")
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
- '(slime-lisp-implementations (quote ((clojure ("java" "-classpath" "/home/michael/.clojure/clojure.jar:/home/michael/code/swank-clojure/src/main/clojure/:/home/michael/.emacs.d/swank-clojure/src/main/clojure:/home/michael/.clojure/clojure-contrib.jar" "clojure.main" "--repl") :init swank-clojure-init) (sbcl ("/usr/bin/sbcl")))) t)
- '(swank-clojure-extra-classpaths (list "~/.emacs.d/swank-clojure/src/main/clojure/swank" "~/.clojure/clojure-contrib.jar"))
- '(swank-clojure-jar-path "~/.clojure/clojure.jar")
  '(tool-bar-mode nil)
  '(tooltip-mode nil)
  '(tramp-encoding-shell "/bin/bash")
  '(tramp-verbose 0)
  '(visible-bell t))
-
+;;
+;; Set faces
+;;
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
@@ -180,4 +221,5 @@
  '(erc-my-nick-face ((t (:foreground "slateblue" :weight bold))))
  '(erc-nick-default-face ((t (:foreground "light steel blue" :weight bold))))
  '(erc-notice-face ((t (:foreground "LightSlateBlue" :weight bold))))
- '(ido-first-match ((t (:foreground "lightblue" :weight bold)))))
+ '(ido-first-match ((t (:foreground "lightblue" :weight bold))))
+ '(jbo-definition ((((class color) (background dark)) (:foreground "gray")))))

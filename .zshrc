@@ -12,6 +12,8 @@ compinit
 # End of lines added by compinstall
 
 alias tmux="~/bin/tmux.sh"
+alias cd="pushd . >/dev/null; cd"
+alias pd="popd &>/dev/null"
 alias cp="cp -v"
 alias mv="mv -v"
 alias ec="emacsclient -nw"
@@ -27,3 +29,7 @@ export GOROOT="/store/src/go"
 export GOARCH="amd64"
 export GOOS="linux"
 export GOBIN="/usr/local/bin"
+export EDITOR="mg"
+export PAGER="less"
+export DEBMAIL="tensorpuddin@devio.us"
+export DEBFULLNAME="Michael Moorman"
