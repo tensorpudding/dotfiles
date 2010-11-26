@@ -114,6 +114,15 @@
 (add-to-list 'load-path ecb-elisp-dir)
 (require 'ecb)
 ;;
+;; Load Auto-Complete
+;;
+(setq autocomplete-elisp-dir (concat elisp-dir "auto-complete/"))
+(add-to-list 'load-path autocomplete-elisp-dir)
+(require 'auto-complete)
+(add-to-list 'ac-dictionary-directories (concat autocomplete-elisp-dir "dict/"))
+(require 'auto-complete-config)
+(ac-config-default)
+;;
 ;; Load nXhtml for webdev
 ;;
 ;; (setq nxhtml-elisp-dir (concat elisp-dir "nxhtml/"))
@@ -149,6 +158,13 @@
   (unless (or (minibufferp)
 	      (member major-mode linum-disabled-modes-list))
     (linum-mode 1)))
+;;
+;; ERC modeline tracking only in erc-mode buffers
+;;
+(defun set-erc-tracking-if-erc-mode ()
+  (if (not (eq major-mode "erc-mode"))
+      (set (make-local-variable 'erc-modified-channels-object) nil)))
+(add-hook 'after-change-major-mode-hook 'set-erc-tracking-if-erc-mode t)
 ;;
 ;; Set ruby program
 ;; 
@@ -190,6 +206,10 @@
  '(erc-nick-uniquifier "`")
  '(erc-port 6667)
  '(erc-server "irc.freenode.net")
+ '(erc-track-exclude-types (quote ("JOIN" "KICK" "NICK" "PART" "QUIT" "MODE" "333" "353")))
+ '(erc-track-position-in-mode-line (quote before-modes))
+ '(erc-track-shorten-aggressively (quote max))
+ '(erc-track-use-faces t)
  '(erc-truncate-mode t)
  '(erc-try-new-nick-p nil)
  '(fringe-mode 0 nil (fringe))
