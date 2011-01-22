@@ -78,6 +78,15 @@
 (add-to-list 'auto-mode-alist '("\\.y$" . yacc-mode))
 
 ;;
+;; Load Flex/lex major mode
+;;
+
+(setq flex-elisp-dir (concat elisp-dir "flex-mode/"))
+(add-to-list 'load-path flex-elisp-dir)
+(autoload 'flex-mode "flex-mode.el")
+(add-to-list 'auto-mode-alist '("\\.l$" . flex-mode))
+
+;;
 ;; Load Markdown major mode
 ;;
 
@@ -124,7 +133,7 @@
 				      fortran-mode go-mode javascript-mode 
 				      latex-mode makefile-mode objc-mode 
 				      octave-mode pascal-mode perl-mode 
-				      scheme-mode html-mode))
+				      scheme-mode html-mode flex-mode))
 
 (while coding-major-modes
   (add-hook (intern (concat (symbol-name (car coding-major-modes)) "-hook")) 
