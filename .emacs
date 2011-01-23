@@ -126,7 +126,7 @@
   (turn-off-erc-modeline-tracking)
   (turn-on-line-numbering))
 
-(setq coding-major-modes '(elisp-mode c-mode asm-mode python-mode ruby-mode 
+(setq coding-major-modes '(lisp-mode c-mode asm-mode python-mode ruby-mode 
 				      haskell-mode literate-haskell-mode 
 				      tuareg-mode markdown-mode d-mode yacc-mode
 				      ld-script-mode R-mode c++-mode forth-mode
@@ -243,6 +243,14 @@
 ;; (add-hook 'find-file-hook flymake-find-file-hook)
 
 ;;
+;; Load magit
+;;
+
+(setq magit-elisp-dir (concat elisp-dir "magit/"))
+(add-to-list 'load-path 'magit-elisp-dir)
+(require 'magit)
+
+;;
 ;; Session management
 ;;
 
@@ -287,11 +295,18 @@
  '(comment-style (quote plain))
  '(display-time-mode t)
  '(dvc-tips-enabled nil)
+ '(ecb-auto-activate t)
+ '(ecb-compilation-buffer-names (quote (("*Calculator*") ("*vc*") ("*vc-diff*") ("*Apropos*") ("*Occur*") ("*shell*") ("\\*[cC]ompilation.*\\*" . t) ("\\*i?grep.*\\*" . t) ("*JDEE Compile Server*") ("*Help*") ("*Completions*") ("*Backtrace*") ("*Compile-log*") ("*bsh*") ("*gud*") ("*Messages*") ("\\*magit*\\*" . t))))
  '(ecb-compilation-major-modes (quote (compilation-mode slime-mode)))
- '(ecb-compile-window-height 6)
+ '(ecb-compile-window-height 8)
  '(ecb-compile-window-width (quote edit-window))
+ '(ecb-layout-name "leftright1")
+ '(ecb-layout-window-sizes (quote (("leftright1" (0.2 . 0.4864864864864865) (0.2 . 0.10810810810810811) (0.2 . 0.3783783783783784) (0.23529411764705882 . 0.972972972972973)))))
+ '(ecb-new-ecb-frame t)
  '(ecb-options-version "2.40")
+ '(ecb-source-path (quote ("~/Code/")))
  '(ecb-tip-of-the-day nil)
+ '(ecb-vc-enable-support t)
  '(erc-autojoin-channels-alist (quote (("freenode.net" "##crawl" "##freebsd" "#go-nuts" "#python" "#haskell" "#ruby-lang" "#clojure" "#debian" "#lojban" "##linux" "#haskell-blah" "#math" "#ubuntu" "#ubuntu-offtopic" "#emacs"))))
  '(erc-autojoin-mode t)
  '(erc-insert-post-hook (quote (erc-truncate-buffer erc-make-read-only erc-track-modified-channels erc-truncate-buffer)))
