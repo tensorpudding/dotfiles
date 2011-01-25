@@ -126,6 +126,7 @@
   (turn-off-erc-modeline-tracking)
   (turn-on-line-numbering))
 
+;; Yeah, I'm going to add these in here as I find them, one at a time... :(
 (setq coding-major-modes '(lisp-mode c-mode asm-mode python-mode ruby-mode 
 				      haskell-mode literate-haskell-mode 
 				      tuareg-mode markdown-mode d-mode yacc-mode
@@ -133,12 +134,21 @@
 				      fortran-mode go-mode javascript-mode 
 				      latex-mode makefile-mode objc-mode 
 				      octave-mode pascal-mode perl-mode 
-				      scheme-mode html-mode flex-mode))
+				      scheme-mode html-mode flex-mode
+				      emacs-lisp-mode clojure-mode))
 
 (while coding-major-modes
   (add-hook (intern (concat (symbol-name (car coding-major-modes)) "-hook")) 
 	    'run-code-hooks)
   (setq coding-major-modes (cdr coding-major-modes)))
+
+;;
+;; Load unbound.el
+;;
+
+(setq unbound-elisp-dir (concat elisp-dir "unbound/"))
+(add-to-list 'load-path unbound-elisp-dir)
+(require 'unbound)
 
 ;;
 ;; Load ProofGeneral
@@ -247,7 +257,7 @@
 ;;
 
 (setq magit-elisp-dir (concat elisp-dir "magit/"))
-(add-to-list 'load-path 'magit-elisp-dir)
+(add-to-list 'load-path magit-elisp-dir)
 (require 'magit)
 
 ;;
@@ -257,6 +267,12 @@
 (desktop-save-mode t)
 (require 'midnight)
 (savehist-mode 1)
+
+;;
+;; Set custom keybindings
+;;
+
+(global-set-key (kbd "C-c s") 'magit-status)
 
 ;;
 ;; Set ruby program
