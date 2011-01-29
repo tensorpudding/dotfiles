@@ -273,6 +273,8 @@
 ;;
 
 (global-set-key (kbd "C-c s") 'magit-status)
+(global-set-key (kbd "C-c g") 'gdb)
+(global-set-key (kbd "C-c c") 'calc)
 
 ;;
 ;; Set ruby program
@@ -312,7 +314,7 @@
  '(display-time-mode t)
  '(dvc-tips-enabled nil)
  '(ecb-auto-activate t)
- '(ecb-compilation-buffer-names (quote (("*Calculator*") ("*vc*") ("*vc-diff*") ("*Apropos*") ("*Occur*") ("*shell*") ("\\*[cC]ompilation.*\\*" . t) ("\\*i?grep.*\\*" . t) ("*JDEE Compile Server*") ("*Help*") ("*Completions*") ("*Backtrace*") ("*Compile-log*") ("*bsh*") ("*gud*") ("*Messages*") ("\\*magit*\\*" . t))))
+ '(ecb-compilation-buffer-names (quote (("*Calculator*") ("*vc*") ("*vc-diff*") ("*Apropos*") ("*Occur*") ("*shell*") ("\\*[cC]ompilation.*\\*" . t) ("\\*i?grep.*\\*" . t) ("*JDEE Compile Server*") ("*Help*") ("*Completions*") ("*Backtrace*") ("*Compile-log*") ("*bsh*") ("*gud*") ("*Messages*") ("\\*magit: *\\*" . t) ("Calc:*" . t))))
  '(ecb-compilation-major-modes (quote (compilation-mode slime-mode)))
  '(ecb-compile-window-height 8)
  '(ecb-compile-window-width (quote edit-window))
