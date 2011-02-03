@@ -324,6 +324,8 @@
  '(ecb-source-path (quote ("~/Code/")))
  '(ecb-tip-of-the-day nil)
  '(ecb-vc-enable-support t)
+ '(ediff-custom-diff-options "-u")
+ '(ediff-diff-options "")
  '(erc-autojoin-channels-alist (quote (("freenode.net" "##crawl" "##freebsd" "#go-nuts" "#python" "#haskell" "#ruby-lang" "#clojure" "#debian" "#lojban" "##linux" "#haskell-blah" "#math" "#ubuntu" "#ubuntu-offtopic" "#emacs"))))
  '(erc-autojoin-mode t)
  '(erc-insert-post-hook (quote (erc-truncate-buffer erc-make-read-only erc-track-modified-channels erc-truncate-buffer)))
