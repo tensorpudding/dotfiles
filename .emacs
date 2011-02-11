@@ -260,6 +260,15 @@
 (require 'magit)
 
 ;;
+;; Load secrets.el and set password variables, connect to ERC
+;;
+
+(require 'secrets)
+(when (y-or-n-p "Connect to IRC? ")
+  (erc :server "irc.freenode.net" :port 6667 
+     :nick freenode-nickname :password freenode-password))
+
+;;
 ;; Session management
 ;;
 
@@ -334,6 +343,7 @@
  '(erc-nick "tensorpudding")
  '(erc-nick-uniquifier "`")
  '(erc-port 6667)
+ '(erc-prompt-for-password nil)
  '(erc-server "irc.freenode.net")
  '(erc-track-exclude-types (quote ("JOIN" "KICK" "NICK" "PART" "QUIT" "MODE" "333" "353")))
  '(erc-track-position-in-mode-line (quote before-modes))
