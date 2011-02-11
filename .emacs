@@ -14,7 +14,6 @@
 (setq jbo-dir (concat elisp-dir "jbo.el/"))
 (add-to-list 'load-path jbo-dir)
 (require 'jbo)
-(global-set-key (kbd "C-c M-l") 'jbo-lookup-at-point)
 
 ;;
 ;; Load Haskell mode
@@ -275,6 +274,7 @@
 (global-set-key (kbd "C-c s") 'magit-status)
 (global-set-key (kbd "C-c g") 'gdb)
 (global-set-key (kbd "C-c c") 'calc)
+(global-set-key (kbd "C-c l") 'jbo-lookup-at-point)
 
 ;;
 ;; Set ruby program
