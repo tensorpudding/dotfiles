@@ -214,12 +214,12 @@
 ;; Load Auto-Complete
 ;;
 
-(setq autocomplete-elisp-dir (concat elisp-dir "auto-complete/"))
-(add-to-list 'load-path autocomplete-elisp-dir)
-(require 'auto-complete)
-(add-to-list 'ac-dictionary-directories (concat autocomplete-elisp-dir "dict/"))
-(require 'auto-complete-config)
-(ac-config-default)
+;; (setq autocomplete-elisp-dir (concat elisp-dir "auto-complete/"))
+;; (add-to-list 'load-path autocomplete-elisp-dir)
+;; (require 'auto-complete)
+;; (add-to-list 'ac-dictionary-directories (concat autocomplete-elisp-dir "dict/"))
+;; (require 'auto-complete-config)
+;; (ac-config-default)
 
 ;;
 ;; Load nXhtml for webdev
