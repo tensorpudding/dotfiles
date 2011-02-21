@@ -94,6 +94,17 @@
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 
 ;;
+;; Load Vala major mode
+;;
+
+(setq vala-elisp-dir (concat elisp-dir "vala-mode/"))
+(autoload 'vala-mode "vala-mode" "Major mode for editing Vala code." t)
+(add-to-list 'auto-mode-alist '("\\.vala$" . vala-mode))
+(add-to-list 'auto-mode-alist '("\\.vapi$" . vala-mode))
+(add-to-list 'file-coding-system-alist '("\\.vala$" . utf-8))
+(add-to-list 'file-coding-system-alist '("\\.vapi$" . utf-8))
+
+;;
 ;; Load column-marker.el
 ;;
 
@@ -134,7 +145,7 @@
 				      latex-mode makefile-mode objc-mode 
 				      octave-mode pascal-mode perl-mode 
 				      scheme-mode html-mode flex-mode
-				      emacs-lisp-mode clojure-mode))
+				      emacs-lisp-mode clojure-mode vala-mode))
 
 (while coding-major-modes
   (add-hook (intern (concat (symbol-name (car coding-major-modes)) "-hook")) 
