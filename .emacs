@@ -272,13 +272,15 @@
 (require 'magit)
 
 ;;
-;; Load secrets.el and set password variables, connect to ERC
+;; Load secrets.el and set password variables, connect to IRC
 ;;
 
 (require 'secrets)
 (when (y-or-n-p "Connect to IRC? ")
   (erc :server "irc.freenode.net" :port 6667 
-     :nick freenode-nickname :password freenode-password))
+     :nick freenode-nickname :password freenode-password)
+  (erc :server "irc.oftc.net" :port 6667
+     :nick oftc-nickname))
 
 ;;
 ;; Session management
@@ -347,7 +349,7 @@
  '(ecb-vc-enable-support t)
  '(ediff-custom-diff-options "-u")
  '(ediff-diff-options "")
- '(erc-autojoin-channels-alist (quote (("freenode.net" "##crawl" "##freebsd" "#go-nuts" "#python" "#haskell" "#ruby-lang" "#clojure" "#debian" "#lojban" "##linux" "#haskell-blah" "#math" "#ubuntu" "#ubuntu-offtopic" "#emacs"))))
+ '(erc-autojoin-channels-alist (quote (("freenode.net" "##crawl" "##freebsd" "#go-nuts" "#python" "#haskell" "#ruby-lang" "#clojure" "#debian" "#lojban" "##linux" "#haskell-blah" "#math" "#ubuntu" "#ubuntu-offtopic" "#emacs") ("oftc.net" "#debian" "#debian-mentors"))))
  '(erc-autojoin-mode t)
  '(erc-insert-post-hook (quote (erc-truncate-buffer erc-make-read-only erc-track-modified-channels erc-truncate-buffer)))
  '(erc-join-buffer (quote bury))
