@@ -237,8 +237,8 @@
 ;; Load nXhtml for webdev
 ;;
 
-;; (setq nxhtml-elisp-dir (concat elisp-dir "nxhtml/"))
-;; (load-file (concat nxhtml-elisp-dir "autostart.el"))
+(setq nxhtml-elisp-dir (concat elisp-dir "nxhtml/"))
+(load-file (concat nxhtml-elisp-dir "autostart.el"))
 
 ;;
 ;; Load AUCTeX
