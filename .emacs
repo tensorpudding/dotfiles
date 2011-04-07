@@ -277,11 +277,15 @@
 ;;
 
 (require 'secrets)
-(when (y-or-n-p "Connect to IRC? ")
-  (erc :server "irc.freenode.net" :port 6667 
-     :nick freenode-nickname :password freenode-password)
-  (erc :server "irc.oftc.net" :port 6667
-     :nick oftc-nickname))
+(defun connect-to-irc ()
+  (interactive)
+  (when (y-or-n-p "Connect to IRC? ")
+    (erc :server "irc.freenode.net" :port 6667 
+	 :nick freenode-nickname :password freenode-password)
+    (erc :server "irc.oftc.net" :port 6667
+	 :nick oftc-nickname)))
+(connect-to-irc)
+
 
 ;;
 ;; Session management
@@ -298,7 +302,11 @@
 (global-set-key (kbd "C-c s") 'magit-status)
 (global-set-key (kbd "C-c g") 'gdb)
 (global-set-key (kbd "C-c c") 'calc)
-(global-set-key (kbd "C-c l") 'jbo-lookup-at-point)
+(global-set-key (kbd "C-c i") 'connect-to-irc)
+(global-set-key (kbd "C-c e") 'ecb-activate)
+
+
+;; (global-set-key (kbd "C-c l") 'jbo-lookup-at-point)
 
 ;;
 ;; Set ruby program
@@ -350,7 +358,7 @@
  '(ecb-vc-enable-support t)
  '(ediff-custom-diff-options "-u")
  '(ediff-diff-options "")
- '(erc-autojoin-channels-alist (quote (("freenode.net" "##crawl" "##freebsd" "#go-nuts" "#python" "#haskell" "#ruby-lang" "#clojure" "#debian" "#lojban" "##linux" "#haskell-blah" "#math" "#ubuntu" "#ubuntu-offtopic" "#emacs") ("oftc.net" "#debian" "#debian-mentors"))))
+ '(erc-autojoin-channels-alist (quote (("freenode.net" "##freebsd" "#go-nuts" "#python" "#haskell" "#ruby-lang" "#clojure" "#debian" "#lojban" "##linux" "#haskell-blah" "#math" "#ubuntu" "#ubuntu-offtopic" "#emacs") ("oftc.net" "#debian" "#debian-mentors"))))
  '(erc-autojoin-mode t)
  '(erc-insert-post-hook (quote (erc-truncate-buffer erc-make-read-only erc-track-modified-channels erc-truncate-buffer)))
  '(erc-join-buffer (quote bury))
