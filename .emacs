@@ -146,7 +146,8 @@
 				      latex-mode makefile-mode objc-mode 
 				      octave-mode pascal-mode perl-mode 
 				      scheme-mode html-mode flex-mode
-				      emacs-lisp-mode clojure-mode vala-mode))
+				      emacs-lisp-mode clojure-mode vala-mode 
+				      nxhtml-mode))
 
 (while coding-major-modes
   (add-hook (intern (concat (symbol-name (car coding-major-modes)) "-hook")) 
