@@ -11,9 +11,9 @@
 ;; Load jbo.el
 ;;
 
-(setq jbo-dir (concat elisp-dir "jbo.el/"))
-(add-to-list 'load-path jbo-dir)
-(require 'jbo)
+;; (setq jbo-dir (concat elisp-dir "jbo.el/"))
+;; (add-to-list 'load-path jbo-dir)
+;; (require 'jbo)
 
 ;;
 ;; Load Haskell mode
