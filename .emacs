@@ -3,7 +3,7 @@
 ;;
 ;; Load elisp dir
 ;;
-
+;;
 (setq elisp-dir "~/.elisp/")
 (add-to-list 'load-path elisp-dir)
 
@@ -218,7 +218,6 @@
 ;;
 ;; Load ECB (Emacs Code Browser)
 ;;
-
 (setq ecb-elisp-dir (concat elisp-dir "ecb/"))
 (add-to-list 'load-path ecb-elisp-dir)
 (require 'ecb)
@@ -345,7 +344,6 @@
  '(comment-style (quote plain))
  '(display-time-mode t)
  '(dvc-tips-enabled nil)
- '(ecb-auto-activate t)
  '(ecb-compilation-buffer-names (quote (("*Calculator*") ("*vc*") ("*vc-diff*") ("*Apropos*") ("*Occur*") ("*shell*") ("\\*[cC]ompilation.*\\*" . t) ("\\*i?grep.*\\*" . t) ("*JDEE Compile Server*") ("*Help*") ("*Completions*") ("*Backtrace*") ("*Compile-log*") ("*bsh*") ("*gud*") ("*Messages*") ("\\*magit: *\\*" . t) ("Calc:*" . t))))
  '(ecb-compilation-major-modes (quote (compilation-mode slime-mode)))
  '(ecb-compile-window-height 8)
@@ -382,10 +380,10 @@
  '(midnight-mode t nil (midnight))
  '(nil nil t)
  '(scheme-program-name "mzscheme")
- '(scroll-bar-mode nil)
+ '(scroll-bar-mode (quote right))
  '(show-paren-mode t)
- '(tool-bar-mode nil)
- '(tooltip-mode nil)
+ '(tool-bar-mode t)
+ '(tooltip-mode t)
  '(tramp-encoding-shell "/bin/bash")
  '(tramp-verbose 0)
  '(visible-bell t))
@@ -397,11 +395,11 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#2e3436" :foreground "#eeeeec" :inverse-video nil :box nil))))
- '(erc-bold-face ((t (:foreground "deep pink" :weight bold))))
- '(erc-input-face ((t (:foreground "thistle"))))
- '(erc-my-nick-face ((t (:foreground "slateblue" :weight bold))))
- '(erc-nick-default-face ((t (:foreground "light steel blue" :weight bold))))
- '(erc-notice-face ((t (:foreground "LightSlateBlue" :weight bold))))
+  ;; '(default ((t (:inherit nil :stipple nil :background "#2e3436" :foreground "#eeeeec" :inverse-video nil :box nil))))
+;;  '(erc-bold-face ((t (:foreground "deep pink" :weight bold))))
+;;  '(erc-input-face ((t (:foreground "thistle"))))
+;;  '(erc-my-nick-face ((t (:foreground "slateblue" :weight bold))))
+;;  '(erc-nick-default-face ((t (:foreground "light steel blue" :weight bold))))
+;;  '(erc-notice-face ((t (:foreground "LightSlateBlue" :weight bold))))
  '(ido-first-match ((t (:foreground "lightblue" :weight bold))))
  '(jbo-definition ((((class color) (background dark)) (:foreground "gray")))))
