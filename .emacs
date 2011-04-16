@@ -297,9 +297,9 @@
 ;; Session management
 ;;
 
-(desktop-save-mode t)
 (require 'midnight)
-(savehist-mode 1)
+;;(desktop-save-mode t)
+;;(savehist-mode 1)
 
 ;;
 ;; Set custom keybindings
@@ -308,10 +308,13 @@
 (global-set-key (kbd "C-c s") 'magit-status)
 (global-set-key (kbd "C-c g") 'gdb)
 (global-set-key (kbd "C-c c") 'calc)
+
 (global-set-key (kbd "C-c i") 'connect-to-irc)
-(global-set-key (kbd "C-c e") 'ecb-activate)
 (global-set-key (kbd "C-c r") 'comment-region)
 (global-set-key (kbd "C-c R") 'uncomment-region)
+
+(global-set-key (kbd "C-c e") 'ecb-activate)
+(global-set-key (kbd "C-c E") 'ecb-deactivate)
 
 ;; (global-set-key (kbd "C-c l") 'jbo-lookup-at-point)
 
@@ -331,7 +334,7 @@
 ;; Start server
 ;;
 
-(server-start)
+;; (server-start)
 
 ;;
 ;; Set variables
@@ -356,7 +359,7 @@
  '(ecb-compilation-major-modes (quote (compilation-mode slime-mode)))
  '(ecb-compile-window-height 8)
  '(ecb-compile-window-width (quote edit-window))
- '(ecb-layout-name "leftright2")
+ '(ecb-layout-name "top1")
  '(ecb-layout-window-sizes (quote (("mycustomlayout" (0.2 . 0.8148148148148148) (0.2 . 0.5185185185185185) (0.2411764705882353 . 0.48148148148148145) (0.2411764705882353 . 0.4444444444444444) (0.2411764705882353 . 0.4074074074074074)) ("leftright2" (0.21764705882352942 . 0.5135135135135135) (0.21764705882352942 . 0.4594594594594595) (0.23529411764705882 . 0.5135135135135135) (0.23529411764705882 . 0.4594594594594595)) ("leftright1" (0.2 . 0.4864864864864865) (0.2 . 0.10810810810810811) (0.2 . 0.3783783783783784) (0.23529411764705882 . 0.972972972972973)))))
  '(ecb-options-version "2.40")
  '(ecb-source-path (quote ("~/Code/")))
