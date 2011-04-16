@@ -166,9 +166,9 @@
 ;; Load ProofGeneral
 ;;
 
-(setq proof-elisp-dir (concat elisp-dir "ProofGeneral/"))
-(add-to-list 'load-path proof-elisp-dir)
-(load-file (concat proof-elisp-dir "generic/proof-site.el"))
+;; (setq proof-elisp-dir (concat elisp-dir "ProofGeneral/"))
+;; (add-to-list 'load-path proof-elisp-dir)
+;; (load-file (concat proof-elisp-dir "generic/proof-site.el"))
 
 ;;
 ;; Load ESS (Emacs Speaks Statistics)
@@ -232,6 +232,14 @@
 ;; (add-to-list 'ac-dictionary-directories (concat autocomplete-elisp-dir "dict/"))
 ;; (require 'auto-complete-config)
 ;; (ac-config-default)
+
+;;
+;; Lusty Explorer
+;; 
+
+;; (setq lusty-elisp-dir (concat elisp-dir "lusty-explorer/"))
+;; (add-to-list 'load-path lusty-elisp-dir)
+;; (require 'lusty-explorer)
 
 ;;
 ;; Load nXhtml for webdev
