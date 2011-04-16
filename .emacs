@@ -122,9 +122,9 @@
   (column-marker-1 70)
   (column-marker-2 80))
 
-(defun turn-off-erc-modeline-tracking ()
-  (interactive)
-  (set (make-local-variable 'erc-modified-channels-object) nil))
+;; (defun turn-off-erc-modeline-tracking ()
+;;  (interactive)
+;;  (set (make-local-variable 'erc-modified-channels-object) nil))
 
 (defun turn-on-line-numbering ()
   (interactive)
@@ -134,7 +134,7 @@
 (defun run-code-hooks ()
   (interactive)
   (turn-on-columns)
-  (turn-off-erc-modeline-tracking)
+;;  (turn-off-erc-modeline-tracking)
   (turn-on-line-numbering))
 
 ;; Yeah, I'm going to add these in here as I find them, one at a time... :(
@@ -275,16 +275,15 @@
 ;; Load secrets.el and set password variables, connect to IRC
 ;;
 
-(require 'secrets)
-(defun connect-to-irc ()
-  (interactive)
-  (when (y-or-n-p "Connect to IRC? ")
-    (erc :server "irc.freenode.net" :port 6667 
-	 :nick freenode-nickname :password freenode-password)
-    (erc :server "irc.oftc.net" :port 6667
-	 :nick oftc-nickname)))
-(connect-to-irc)
-
+;;(require 'secrets)
+;;(defun connect-to-irc ()
+;;  (interactive)
+;;  (when (y-or-n-p "Connect to IRC? ")
+;;    (erc :server "irc.freenode.net" :port 6667 
+;;	 :nick freenode-nickname :password freenode-password)
+;;    (erc :server "irc.oftc.net" :port 6667
+;;	 :nick oftc-nickname)))
+;;(connect-to-irc)
 
 ;;
 ;; Session management
