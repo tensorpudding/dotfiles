@@ -89,9 +89,9 @@
 ;; Load Markdown major mode
 ;;
 
-(setq mardown-elisp-dir (concat elisp-dir "markdown-mode/"))
-(autoload 'markdown-mode "markdown-mode.el")
-(add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+;;(setq mardown-elisp-dir (concat elisp-dir "markdown-mode/"))
+;;(autoload 'markdown-mode "markdown-mode.el")
+;;(add-to-list 'auto-mode-alist '("\\.md$" . markdown-html-mumamo-mode))
 
 ;;
 ;; Load Vala major mode
@@ -147,7 +147,7 @@
 				      octave-mode pascal-mode perl-mode 
 				      scheme-mode html-mode flex-mode
 				      emacs-lisp-mode clojure-mode vala-mode 
-				      nxhtml-mode))
+				      nxhtml-mode nroff-mode))
 
 (while coding-major-modes
   (add-hook (intern (concat (symbol-name (car coding-major-modes)) "-hook")) 
