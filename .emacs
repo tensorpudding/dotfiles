@@ -302,7 +302,8 @@
 (global-set-key (kbd "C-c c") 'calc)
 (global-set-key (kbd "C-c i") 'connect-to-irc)
 (global-set-key (kbd "C-c e") 'ecb-activate)
-
+(global-set-key (kbd "C-c r") 'comment-region)
+(global-set-key (kbd "C-c R") 'uncomment-region)
 
 ;; (global-set-key (kbd "C-c l") 'jbo-lookup-at-point)
 
