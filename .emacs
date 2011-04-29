@@ -8,6 +8,40 @@
 (add-to-list 'load-path elisp-dir)
 
 ;;
+;; Load color-theme.el
+;;
+(setq color-theme-dir (concat elisp-dir "color-theme/"))
+(add-to-list 'load-path color-theme-dir)
+(require 'color-theme)
+
+;;
+;; Load emacs solarized theme
+;;
+
+(setq solarized-dir (concat elisp-dir "emacs-color-theme-solarized/"))
+(add-to-list 'load-path solarized-dir)
+(require 'color-theme-solarized)
+(eval-after-load "color-theme"
+  '(progn
+     (color-theme-initialize)
+     (color-theme-solarized-dark)))
+
+;;
+;; Set frame size
+;;
+
+(defun set-frame-size-by-resolution ()
+  (interactive)
+  (if window-system
+      (progn
+	(add-to-list 'default-frame-alist (cons 'width 90))
+	(add-to-list 'default-frame-alist 
+		     (cons 'height (/ (- (x-display-pixel-height) 150)
+				      (frame-char-height)))))))
+
+(set-frame-size-by-resolution)
+
+;;
 ;; Load jbo.el
 ;;
 
@@ -129,12 +163,11 @@
 (defun turn-on-line-numbering ()
   (interactive)
   (linum-mode 1)
-  (setq linum-format "%d "))
+  (setq linum-format "%5d "))
 
 (defun run-code-hooks ()
   (interactive)
   (turn-on-columns)
-;;  (turn-off-erc-modeline-tracking)
   (turn-on-line-numbering))
 
 ;; Yeah, I'm going to add these in here as I find them, one at a time... :(
@@ -153,6 +186,14 @@
   (add-hook (intern (concat (symbol-name (car coding-major-modes)) "-hook")) 
 	    'run-code-hooks)
   (setq coding-major-modes (cdr coding-major-modes)))
+
+;;
+;; Disable eshell sudo
+;;
+(add-hook 'eshell-mode-hook
+	  '(lambda () (fmakunbound 'eshell/sudo)
+	     (fmakunbound 'eshell/su)))
+
 
 ;;
 ;; Load unbound.el
@@ -223,6 +264,16 @@
 (require 'ecb)
 
 ;;
+;; Yet Another Snippet mode
+;;
+
+(setq yasnippet-elisp-dir (concat elisp-dir "yasnippet/"))
+(add-to-list 'load-path yasnippet-elisp-dir)
+(require 'yasnippet)
+(yas/initialize)
+(yas/load-directory (concat yasnippet-elisp-dir "snippets/"))
+
+;;
 ;; Load Auto-Complete
 ;;
 
@@ -252,9 +303,9 @@
 ;; Load AUCTeX
 ;;
 
-;; (setq auctex-elisp-dir (concat elisp-dir "auctex/"))
-;; (load (concat auctex-elisp-dir "auctex.el") nil t t)
-;; (load (concat auctex-elisp-dir "preview-latex.el") nil t t)
+(setq auctex-elisp-dir (concat elisp-dir "auctex/"))
+(load (concat auctex-elisp-dir "auctex.el") nil t t)
+;;(load (concat auctex-elisp-dir "preview-latex.el") nil t t)
 
 ;;
 ;; Load DVC (Distributed Version Control)
