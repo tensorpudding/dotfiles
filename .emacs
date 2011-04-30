@@ -361,6 +361,9 @@
 (global-set-key (kbd "C-c g") 'gdb)
 (global-set-key (kbd "C-c c") 'calc)
 
+(global-set-key (kbd "C-c d") 'ediff-current-file)
+(global-set-key (kbd "C-c D") 'ediff-files)
+
 (global-set-key (kbd "C-c i") 'connect-to-irc)
 (global-set-key (kbd "C-c r") 'comment-region)
 (global-set-key (kbd "C-c R") 'uncomment-region)
