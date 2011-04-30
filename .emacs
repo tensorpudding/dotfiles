@@ -123,9 +123,10 @@
 ;; Load Markdown major mode
 ;;
 
-;;(setq mardown-elisp-dir (concat elisp-dir "markdown-mode/"))
-;;(autoload 'markdown-mode "markdown-mode.el")
-;;(add-to-list 'auto-mode-alist '("\\.md$" . markdown-html-mumamo-mode))
+(setq markdown-elisp-dir (concat elisp-dir "markdown-mode/"))
+(add-to-list 'load-path markdown-elisp-dir)
+(autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown." t)
+(add-to-list 'auto-mode-alist '("\\.md$" . markdown-html-mumamo-mode))
 
 ;;
 ;; Load Vala major mode
