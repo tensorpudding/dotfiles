@@ -33,3 +33,4 @@ export EDITOR="mg"
 export PAGER="less"
 export DEBMAIL="tensorpuddin@devio.us"
 export DEBFULLNAME="Michael Moorman"
+export PATH=$PATH:/opt/haskell/bin
