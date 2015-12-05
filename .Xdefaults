@@ -1,16 +1,25 @@
-URxvt*colorBD:red
-URxvt*colorUL:green
 URxvt*saveLines:32767
 URxvt*scrollBar:false
 URxvt*internalBorder:false
 ! URxvt*font:xft:Inconsolata:pixelsize=14
 ! URxvt*font:xft:Fixedsys Excelsior:pixelsize=12
-URxvt*font:xft:Anonymous Pro:pixelsize=14
-! URxvt*font:xft:Proggy Clean:pixelsize=14
+! URxvt*font:xft:Anonymous Pro:pixelsize=14
+! URxvt*font:xft:Proggy Clean TT:antialias=false,pixelsize=14,\
+!                       [codeset=JISX0208]xft:Kochi Gothic:antialias=false
+! URxvt*boldFont:xft:Proggy Clean TT Bold:antialias=false,pixelsize=14,\
+!                       [codeset=JISX0208]xft:Kochi Gothic:antialias=false
+URxvt*font: terminus-12,\
+                      [codeset=JISX0208]xft:Kochi Gothic:antialias=false
+URxvt*boldFont: terminus-bold-12,\
+                      [codeset=JISX0208]xft:Kochi Gothic:antialias=false
+! URxvt*font: x:-*-tewi-medium-*-*-*-11-*-*-*-*-*-*-*,\
+!                       [codeset=JISX0208]xft:Kochi Gothic:antialias=false
+! URxvt*boldFont: x:-*-tewi-bold-*-*-*-11-*-*-*-*-*-*-*,\,\
+!                       [codeset=JISX0208]xft:Kochi Gothic:antialias=false
 URxvt*loginShell:true
 URxvt.urgentOnBell: true
-URxvt.background: #2e3436
-URxvt.foreground: #eeeeec
+URxvt.background: #000000
+URxvt.foreground: #ffffff
 URxvt.color0: #2e3436
 URxvt.color1: #cc0000
 URxvt.color2: #4e9a06
@@ -30,5 +39,6 @@ URxvt.perl-ext-common: default,matcher
 URxvt.urlLauncher: x-www-browser
 URxvt.matcher.button: 1
 URxvt.color15: #eeeeec
-Emacs.FontBackend: xft
-Emacs.font: Anonymous Pro-11
+URxvt.transparent:true
+URxvt.shading:5
+URxvt.title: Terminal
